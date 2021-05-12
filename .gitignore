@@ -1,4 +1,5 @@
 dataset
+venv
 *.wav
 *.mp3
-*.txt
+speech.txt
