@@ -38,9 +38,9 @@ def faceRecog():
                 # isFaceRecognized = True
                 if(Id==1):
                     name="King"
-                elif(name==2):
+                elif(Id==2):
                     name="shally "
-                elif(name==3):
+                elif(Id==3):
                     name="aahhh"         
                 cam.release()
                 cv2.destroyAllWindows()
@@ -52,10 +52,10 @@ def faceRecog():
             if(time.time() > timeout):
                 cam.release()
                 cv2.destroyAllWindows()
-                return name
+                return name, Id
 
 
-            cv2.putText(im, str(Id), (x,y-40), font, 1, (255,255,255), 3)
+            cv2.putText(im, str(name), (x,y-40), font, 1, (255,255,255), 3)
             im=cv2.resize(im,(600,400))
             cv2.imshow('im',im)
             
