@@ -8,12 +8,11 @@ import os
 
 flag=0
 
-r = sr.Recognizer() 
+r = sr.Recognizer()
+
 def recog():
     
     while(1):
-        
-        
       
         # Exception handling to handle
         # exceptions at the runtime
@@ -60,7 +59,7 @@ def txt():
 
         speech = gTTS(text = str(file), lang = language, slow = False)
         speech.save("voice.wav")
-        os.system("start voice.wav")
+        # os.system("start voice.wav")
 
     
 
@@ -89,7 +88,7 @@ while True:
         Id, conf = recognizer.predict(gray[y:y+h, x:x+w])
         if(conf<50):
             if(Id==1):
-                Id="milly"
+                Id="king"
                 if(flag==0):
                     txt()
                     flag=1

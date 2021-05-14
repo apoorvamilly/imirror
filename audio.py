@@ -9,6 +9,7 @@ Created on Mon May 10 16:12:26 2021
 # to speech conversion  
 from gtts import gTTS  
 import os
+import platform
   
 # This module is imported so that we can  
 # play the converted audio  
@@ -17,10 +18,25 @@ import os
 file = open("speech.txt", "r").read().replace("\n", " ")
 # Here are converting in English Language  
 language = 'en' 
- 
+
 speech = gTTS(text = str(file), lang = language, slow = False)
+
 speech.save("voice.mp3")
-os.system("start voice.mp3")
+
+# Get the current operating sytem
+OS = platform.system()
+
+# Start command doesn't work on linux
+
+if OS == 'Linux':
+    # Install mpg123 binaries on the system
+    # sudo apt-get install mpg123
+    os.system('mpg123 voice.mp3')
+else:
+    os.system("start voice.mp3")
+
+
+
   
 # It is a text value that we want to convert to audio  
 #text_val = 'All the best for your exam.'  
