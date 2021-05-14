@@ -57,7 +57,7 @@ def run():
             # Get the voice from the user
             command = voiceInput.getVoice()
 
-            if(command == 'ad'):
+            if(command == 'ad' or command == 'add'):
                 # TODO: Add new task
                 print('Add new task here')
                 def addNewTask():
