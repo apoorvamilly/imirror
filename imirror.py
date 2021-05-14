@@ -4,7 +4,8 @@ import speech
 import voiceInput
 from train import trainDataset
 import voices
-
+import weather
+import _thread
 
 
 # TODO: A menu system
@@ -14,6 +15,8 @@ menu = {
     "register": "Say register to register as a new face",
 }
 
+
+_thread.start_new_thread(weather.showWeather, ())
 def run():
     # As a default, let the camera identify the user
     # Check if the user exists
@@ -53,6 +56,7 @@ def run():
         def doUserInteractions():
             speech.SpeakText('Say add to add new tasks')
             speech.SpeakText('Say list to know your pending tasks')
+            speech.SpeakText('Say exit to quit')
 
             # Get the voice from the user
             command = voiceInput.getVoice()
@@ -65,9 +69,12 @@ def run():
 
                     # Get the voice from the user
                     task = voiceInput.getVoice()
+
                     speech.writeToFile(Id, task)
                     speech.SpeakText('Do you want to add more tasks?')
+
                     input = voiceInput.getVoice()
+
                     if(input == 'yes'):
                         addNewTask()
                     else:
@@ -84,6 +91,10 @@ def run():
                 print('List the user tasks')
                 speech.SpeakText('The following are your tasks for the day')
                 voices.playAudio(Id)
+                doUserInteractions()
+            
+            elif(command == 'quit' or command == 'exit'):
+                return 0
 
             else:
                 # TODO: wrong option
