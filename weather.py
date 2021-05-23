@@ -12,7 +12,8 @@ import datetime
 from datetime import date
 
 
-def showWeather():
+def showWeather(args):
+    # queueData = args.get()
     today = date.today()
     d2 = today.strftime("%B %d,\n %Y")
     now = datetime.datetime.now()
@@ -37,6 +38,7 @@ def showWeather():
     
     
     x = response.json()
+    # print(args)
 
     root=tk.Tk()
     screen_width = root.winfo_screenwidth()
@@ -54,6 +56,18 @@ def showWeather():
     Upper_right.place(relx = 1.0, 
                     rely = 0.0,
                     anchor ='ne')
+
+
+    # center = tk.Label(root,text = args.get() )
+    # center.config(font =("Verdana", 20))
+    # center.config(background='black')
+    # center.config(foreground='white')
+
+    # center.place(relx = 0.5, 
+    #                 rely = 0.7,
+    #                 anchor ='center')
+
+
     
     
 
@@ -149,10 +163,28 @@ def showWeather():
             Upper_right.config(foreground='white')
 
             Upper_right.place(relx = 0.5, 
-                            rely = 0.5,
+                            rely = i * 0.1,
                             anchor ='center')
         
         
     NewsFromBBC()
+
+
+    # print(args)
+    # while True:
+    #     msg = args
+    #     print(msg)
+    #     # Check contents of and do whatever is needed. As a
+    #     # simple test, print it (in real life, you would
+    #     # suitably update the GUI's display in a richer fashion).
+    #     # print msg
+    #     center = tk.Label(root,text = args )
+    #     center.config(font =("Verdana", 20))
+    #     center.config(background='black')
+    #     center.config(foreground='white')
+
+    #     center.place(relx = 0.5, 
+    #                     rely = 0.7,
+    #                     anchor ='center')
 
     root.mainloop()
